@@ -6,6 +6,10 @@ const RecipeSchema = new Schema({
         type: String,
         required: true,
     },
+    imageUrl: {
+        type: String,
+        required: true,
+    },
     description: {
         type: String,
         required: true,
@@ -14,14 +18,23 @@ const RecipeSchema = new Schema({
         type: String,
         required: true,
     },
-    ingredients: {
+    ingredients: [{
         type: String,
         required: true,
-    },
-    method: {
+    }],
+    method: [{
         type: String,
         required: true,
+    }],
+    cookingTime: {
+        type: Number,
+        required: true,
     },
+    userOwner: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users',
+        required: true,
+    }
 })
 
 const Recipe = mongoose.model("recipes", RecipeSchema);
